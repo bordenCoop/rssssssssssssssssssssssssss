@@ -1,0 +1,63 @@
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<body>
+
+<p id="newfeed">
+
+</p>
+    
+    <p id="test">
+    </p>
+</body>
+
+
+<script>
+    
+    var array = [];
+$(document).ready(function(){
+   var test;
+	var x=10;
+$.get("http://barrie.ctvnews.ca/rss/ctv-news-barrie-1.1293974", function(data) {
+
+    var $xml = $(data);
+    $xml.find("item").each(function(i, val) { 
+
+        var $this = $(this),
+            item = {
+                title: $this.find("title").text(),
+                description: $this.find("description").text()
+        };
+
+        array.push(item.description);
+     
+        
+        
+        setInterval(function(){
+            for(i=0; i < 10; i++){
+                document.getElementById("newfeed").innerHTML=array[i];
+                //array.pop(i);
+            }
+        },1000);
+        
+        
+        document.getElementById("test").innerHTML=array.length;
+        
+        
+        
+      
+        
+        
+        
+        
+        
+		return i<(x-1); // (stop after x iterations)
+        
+         
+			
+    });
+});
+
+});
+</script>
